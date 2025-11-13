@@ -1,0 +1,195 @@
+/* /astro-numero-app/frontend/style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --primary-color: #ffffff;
+    --secondary-color: #f0f8ff;
+    --text-color: #333;
+    --accent-color: #4a90e2;
+    --dark-bg: #1a1a2e;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--primary-color);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#p5-canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.container {
+    background:rgb(135 135 142 / 18%);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    padding-bottom: 85px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    float: left;
+    z-index: 1;
+    
+}
+
+header h1 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+header p {
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+}
+
+#birthdate-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#birthdate-form label {
+    font-weight: 600;
+}
+
+#birthdate-form input[type="date"] {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--accent-color);
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    width: 80%;
+}
+
+#birthdate-form button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    background-color: #cfe2f5;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#birthdate-form button:hover {
+    background-color: #357abd;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Card Styling and Flip Animation */
+#result-section {
+    perspective: 1000px;
+}
+
+.card {
+    width: 100%;
+    max-width: 400px;
+    height: 450px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    cursor: pointer;
+    margin: 20px auto 0;
+    display: flex;
+    justify-content: center;
+}
+
+.card.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    /* width: 100%; */
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.card-front {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    filter: brightness(0.7);
+}
+
+.card-front-overlay {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    background: rgba(0,0,0,0.4);
+    border-radius: 15px;
+}
+
+.card-back {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    transform: rotateY(180deg);
+    padding: 25px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.lucky-color-box {
+    margin-top: 15px;
+    padding: 10px;
+    background: #cfe2f5;
+    border-radius: 8px;
+}
+
+.color-swatch {
+    display: block;
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Loading Spinner */
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid var(--primary-color);
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,63 @@
+<!-- /astro-numero-app/frontend/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astro-Numero Daily Forecast</title>
+<link rel="stylesheet" href="/static/style.css?v=1.1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+
+    <div id="p5-canvas-container"></div>
+
+    <div class="container">
+        <header>
+            <h1>Your Daily Forecast</h1>
+            <p>Find out what your day will be like. Don't hesitate to enter your birthdate below to see what happens.</p>
+        </header>
+
+        <main>
+            <div id="input-section">
+                <form id="birthdate-form">
+                    <label for="birthdate">Your Birthdate:</label>
+                    <input type="date" id="birthdate" name="birthdate" required>
+                    <button type="submit">Reveal My Day</button>
+                </form>
+            </div>
+
+            <div id="result-section" class="hidden">
+                <div class="card" id="prediction-card">
+                    <!-- Front of the card -->
+                    <div class="card-front">
+                        <img id="apod-image" src="" alt="Astronomy Picture of the Day" />
+                        <div class="card-front-overlay">
+                            <h2>Your Daily Reading is Ready</h2>
+                            <p>Click to Reveal</p>
+                        </div>
+                    </div>
+                    <!-- Back of the card -->
+                    <div class="card-back">
+                        <h3 id="life-path-header"></h3>
+                         <p id="character-description" style="font-style: italic; border-bottom: 1px solid #ccc; padding-bottom: 10px;"></p>
+                        <p style=" padding-bottom: 10px;border-bottom: 1px solid #ccc;" id="daily-advice"></p>
+                        <p style="padding-bottom: 10px;border-bottom: 1px solid #ccc;" id="astro-insight"></p>
+                        <div class="lucky-color-box">
+                            <p>Your Lucky Color Today:</p>
+                            <span id="lucky-color" class="color-swatch"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="loading" class="hidden">
+                <div class="spinner"></div>
+            </div>
+        </main>
+    </div>
+<script src="/static/script.js"></script>
+    
+</body>
+</html>
