@@ -1,5 +1,5 @@
-Flask
-google-generativeai
+fastapi
+uvicorn[standard]
+jinja2
+requests
 python-dotenv
-google-api-python-client
-gunicorn
