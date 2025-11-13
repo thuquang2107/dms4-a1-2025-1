@@ -14,6 +14,7 @@ from pathlib import Path
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 
+
 BASE_DIR = Path(__file__).resolve().parent  # trỏ tới backend/
 templates = Jinja2Templates(directory=BASE_DIR / "templates")
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
@@ -240,5 +241,6 @@ def predict_day(user_input: UserInput):
 
     
 # A new, stable fallback image from NASA's Webb Telescope gallery
+
 
 
