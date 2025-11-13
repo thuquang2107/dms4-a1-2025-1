@@ -10,14 +10,18 @@ import datetime
 import requests
 from dotenv import load_dotenv
 import uvicorn
-from pathlib import Path # <<<--- 1. THÊM DÒNG IMPORT NÀY
+from pathlib import Path
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
+
+BASE_DIR = Path(__file__).resolve().parent  # trỏ tới backend/
+templates = Jinja2Templates(directory=BASE_DIR / "templates")
+app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 
 load_dotenv()
 from pathlib import Path # <<<--- 1. THÊM DÒNG IMPORT NÀY
-BASE_DIR = Path(__file__).resolve().parent
 app = FastAPI()
-app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
-templates = Jinja2Templates(directory=BASE_DIR / "templates")
+
 
 
 
@@ -236,4 +240,5 @@ def predict_day(user_input: UserInput):
 
     
 # A new, stable fallback image from NASA's Webb Telescope gallery
+
 
