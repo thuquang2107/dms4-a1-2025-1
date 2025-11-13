@@ -14,17 +14,18 @@ from pathlib import Path # <<<--- 1. THÊM DÒNG IMPORT NÀY
 
 load_dotenv()
 from pathlib import Path # <<<--- 1. THÊM DÒNG IMPORT NÀY
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+BASE_DIR = Path(__file__).resolve().parent
 app = FastAPI()
+app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
+templates = Jinja2Templates(directory=BASE_DIR / "templates")
+
+
 
 # --- 1. Mount the 'static' directory ---
 # This tells FastAPI that any URL starting with /static should serve a file from the 'static' folder.
-app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 
 # --- 2. Configure the 'templates' directory ---
 # This tells FastAPI where to find HTML files to render.
-templates = Jinja2Templates(directory=BASE_DIR / "templates")
 
 # --- CORS Middleware (still good to have for APIs) ---
 origins = ["*"] # Allow all for simplicity
@@ -232,7 +233,7 @@ def predict_day(user_input: UserInput):
     
     return final_response
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+
     
 # A new, stable fallback image from NASA's Webb Telescope gallery
+
